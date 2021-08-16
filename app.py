@@ -35,7 +35,7 @@ def hello_world():
         txt_el.add(tspan)
     dwg.add(txt_el)
     dwg.save()
-    subprocess.run(['xvfb-run', 'inkscape', '--verb=EditSelectAll', '--verb=ObjectToPath', '--verb=FitCanvasToDrawing', '--verb=FileSave', '--verb=FileQuit', fname])
+    subprocess.run(['xvfb-run', 'inkscape', '--with-gui', '--verb', 'EditSelectAll;ObjectToPath;FitCanvasToDrawing;FileSave;FileQuit', fname])
 
 
     return send_file(fname, mimetype='image/svg+xml', as_attachment=True, download_name='{}.svg'.format(download_fname))
